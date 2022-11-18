@@ -1,0 +1,8 @@
+:root {
+  --color-text: rgba(60, 60, 60, 1);
+  --color-background: hsl(33, 69%, 97%);
+  --color-background-line: rgba(60, 60, 60, 0.29);
+  --border-height: 2px;
+  --color-link: #c78827;
+  --color-background-card-image: rgba(0, 0, 0, 0.7);
+}
