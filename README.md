@@ -2,7 +2,7 @@
 
 > A Vue 3 and CSS App with API from The Cocktails Database
 
-[live demo](random-cocktails-p8sn1l54o-maxhiit.vercel.app)
+[live demo](https://random-cocktails-app.vercel.app/)
 
 Uses the following technologies:
 
