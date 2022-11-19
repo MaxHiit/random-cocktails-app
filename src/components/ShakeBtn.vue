@@ -1,13 +1,17 @@
 <template>
   <transition appear @before-enter="beforeEnter" @enter="enter">
     <button class="shake-btn">
-      <span>Suggest me</span>
+      <span>{{ message }}</span>
     </button>
   </transition>
 </template>
 
 <script setup>
 import gsap from "gsap";
+
+defineProps({
+  message: { type: String, default: "" },
+});
 
 const beforeEnter = (el) => {
   el.style.transform = "scale(0)";

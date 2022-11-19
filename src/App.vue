@@ -1,16 +1,20 @@
 <template>
   <header>
-    <LineComponents />
-    <ShakeBtn @click="handleSuggetsClick" />
-    <LineComponents />
+    <LineComponent />
+    <ShakeBtn message="Suggest me" @click="handleSuggetsClick" />
+    <LineComponent />
   </header>
 
   <main>
-    <TitleHero />
+    <TitleHero title="You don't know what to drink ?">
+      <template #iconSlot>
+        <SparklesIcon class="icon" />
+      </template>
+    </TitleHero>
     <div class="slider-container">
       <LoaderComponent v-if="isLoading" />
       <template v-else>
-        <SliderComponent :cocktails="cocktails" />
+        <SliderComponent />
       </template>
     </div>
   </main>
@@ -18,21 +22,24 @@
 
 <script setup>
 import { onBeforeMount } from "vue";
-import useFetchCocktails from "@/composables/useFetchCocktails";
-import LineComponents from "@/components/LineComponents.vue";
+import { storeToRefs } from "pinia";
+import { useCocktailsStore } from "@/stores/CocktailsStore";
+import { SparklesIcon } from "@heroicons/vue/24/solid";
+import LineComponent from "@/components/LineComponent.vue";
 import ShakeBtn from "@/components/ShakeBtn.vue";
 import TitleHero from "@/components/TitleHero.vue";
 import LoaderComponent from "./components/LoaderComponent.vue";
 import SliderComponent from "@/components/SliderComponent.vue";
 
-const { isLoading, cocktails, fetchCocktails } = useFetchCocktails();
+const cocktailsStore = useCocktailsStore();
+const { isLoading } = storeToRefs(cocktailsStore);
 
 const handleSuggetsClick = async () => {
-  await fetchCocktails();
+  await cocktailsStore.fetchCocktails();
 };
 
 onBeforeMount(async () => {
-  await fetchCocktails();
+  await cocktailsStore.fetchCocktails();
 });
 </script>
 

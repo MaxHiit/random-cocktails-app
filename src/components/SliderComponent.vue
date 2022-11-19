@@ -16,23 +16,26 @@
     }"
     :scrollbar="{ draggable: true }"
   >
-    <swiper-slide v-for="(cocktail, index) in cocktails" :key="index">
+    <swiper-slide
+      v-for="(cocktail, index) in cocktails"
+      :key="cocktail.idDrink"
+    >
       <CockailCard :cocktail="cocktail" :index="index" />
     </swiper-slide>
   </swiper>
 </template>
 
 <script setup>
-import CockailCard from "@/components/CockailCard.vue";
 import { Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
+import { storeToRefs } from "pinia";
+import { useCocktailsStore } from "@/stores/CocktailsStore";
+import CockailCard from "@/components/CockailCard.vue";
 import "swiper/css";
 import "swiper/css/scrollbar";
 
-defineProps({
-  cocktails: { type: Array },
-});
-
+const cocktailsStore = useCocktailsStore();
+const { cocktails } = storeToRefs(cocktailsStore);
 const modules = [Scrollbar, A11y];
 </script>
 <style scoped>
