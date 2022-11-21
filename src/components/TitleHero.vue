@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div ref="titleContentRef" class="title-wrapper">
     <slot name="iconSlot"></slot>
 
@@ -24,3 +24,21 @@ onMounted(() => {
   });
 });
 </script>
+
+<style scoped>
+.title-wrapper {
+  align-self: center;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.title {
+  font-size: clamp(1.5rem, 10vw, 3rem);
+  text-align: center;
+  text-transform: capitalize;
+}
+</style>
