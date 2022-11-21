@@ -6,16 +6,16 @@
       :data-img-shape="formatIndexNum"
       loading="lazy"
     >
-      <img :src="cocktail.strDrinkThumb" :alt="cocktail.strDrink" />
+      <img :src="cocktail?.strDrinkThumb" :alt="cocktail.strDrink" />
     </div>
 
     <div ref="cardInfoRef" class="card-info">
       <div class="card_title-wrapper">
         <SparklesIcon class="icon" />
-        <h2 class="card_title">{{ cocktail.strDrink }}</h2>
+        <h2 class="card_title">{{ cocktail?.strDrink }}</h2>
         <span class="card_number">(0{{ formatIndexNum }})</span>
       </div>
-      <p class="card_desc">{{ cocktail.strInstructions }}</p>
+      <p class="card_desc">{{ cocktail?.strInstructions }}</p>
       <a href="#" class="card_link">
         <span>Discover</span>
       </a>
@@ -42,7 +42,7 @@ const formatIndexNum = computed(() => props.index + 1);
 
 // play the animation when the hidden slide appears in the viewport
 watch(swiperSlide, () => {
-  if (swiperSlide.value.isVisible && swiperSlide.value.isActive) {
+  if (swiperSlide.value?.isVisible && swiperSlide.value?.isActive) {
     useCardAnimation(imgRef, cardInfoRef, 0.7);
   }
 });

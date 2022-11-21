@@ -41,6 +41,11 @@ const enter = (el, done) => {
   overflow: hidden;
 }
 
+.shake-btn:hover {
+  border: none;
+  transition: border 0.6s cubic-bezier(0.1, 0, 0.3, 1);
+}
+
 .shake-btn::before {
   content: "";
   width: 130%;
@@ -54,7 +59,7 @@ const enter = (el, done) => {
 }
 
 .shake-btn:hover:before {
-  transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+  transition: transform 0.7s cubic-bezier(0.1, 0, 0.3, 1);
   transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
 }
 
